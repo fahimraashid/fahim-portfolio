@@ -4,30 +4,32 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/layout/navbar';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Fahim Raashid - Sales Leader & Technology Solutions Expert',
-  description: 'Results-oriented Sales Leader with a proven track record in driving revenue growth and market expansion across the Middle East and Africa (MEA) region.',
-  keywords: ['Sales Leader', 'Technology Solutions', 'MEA Region', 'Business Development', 'Strategic Sales'],
+  title: 'Fahim Raashid | Portfolio',
+  description: 'Portfolio website of Fahim Raashid - Technical Sales Professional',
+  metadataBase: new URL('https://heyfahim.com/fahim-portfolio'),
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <body className={`${inter.className} min-h-screen flex flex-col antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
           <Navbar />
-          <main className="flex-grow">{children}</main>
+          <main className="min-h-screen bg-background">
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>
