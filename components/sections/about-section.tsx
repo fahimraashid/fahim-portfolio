@@ -1,127 +1,164 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "@/components/ui/motion";
-import { Card, CardContent } from "@/components/ui/card";
-import { TrendingUp, Globe, Users, Award } from "lucide-react";
+import { motion } from "framer-motion";
+import { Card } from "@/components/ui/card";
+import Image from "next/image";
+import { ArrowRight, Award, Users, Target, Globe } from "lucide-react";
 
-const AboutSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
+export default function AboutSection() {
+  const expertise = [
+    "Strategic Sales",
+    "Business Development",
+    "Technology Sales",
+    "Account Management",
+    "Digital Transformation",
+    "Negotiation & Deal Closing",
+    "Customer Engagement",
+    "Enterprise Software Sales"
+  ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const element = document.getElementById("about");
-    if (element) observer.observe(element);
-
-    return () => {
-      if (element) observer.unobserve(element);
-    };
-  }, []);
-
-  const features = [
+  const achievements = [
     {
-      icon: <TrendingUp className="h-10 w-10 text-blue-600 dark:text-blue-400" />,
-      title: "Revenue Growth",
-      description: "Proven track record of scaling technology businesses and driving substantial revenue increases.",
+      icon: <Target className="h-6 w-6 text-blue-500" />,
+      title: "Sales Excellence",
+      description: "Consistently exceeded sales targets by 150%+ across multiple quarters"
     },
     {
-      icon: <Globe className="h-10 w-10 text-blue-600 dark:text-blue-400" />,
-      title: "Regional Expertise",
-      description: "Deep understanding of Middle East and Africa markets, business cultures, and growth opportunities.",
-    },
-    {
-      icon: <Users className="h-10 w-10 text-blue-600 dark:text-blue-400" />,
+      icon: <Users className="h-6 w-6 text-blue-500" />,
       title: "Team Leadership",
-      description: "Built and led high-performing sales teams across diverse markets and business environments.",
+      description: "Built and led high-performing sales teams across diverse markets"
     },
     {
-      icon: <Award className="h-10 w-10 text-blue-600 dark:text-blue-400" />,
-      title: "Strategic Vision",
-      description: "Combines technological knowledge with business acumen to develop effective go-to-market strategies.",
+      icon: <Globe className="h-6 w-6 text-blue-500" />,
+      title: "Market Expansion",
+      description: "Successfully penetrated new markets in the MEA region"
     },
+    {
+      icon: <Award className="h-6 w-6 text-blue-500" />,
+      title: "Client Success",
+      description: "Maintained 95%+ client retention rate through strategic partnerships"
+    }
   ];
 
   return (
-    <section id="about" className="py-24 bg-background">
-      <div className="container">
+    <section id="about" className="py-20 bg-gray-50 dark:bg-gray-900">
+      <div className="container mx-auto px-4">
         <motion.div
-          className="max-w-2xl mx-auto text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="max-w-6xl mx-auto"
         >
-          <h2 className="text-3xl font-bold tracking-tight mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             About Me
           </h2>
-          <p className="text-xl text-muted-foreground">
-            A seasoned Sales Leader with a passion for driving technology adoption
-            and business transformation across the MEA region.
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h3 className="text-2xl font-bold mb-4">My Approach</h3>
-            <p className="text-muted-foreground mb-6">
-              I believe in building long-term partnerships based on trust, value creation, 
-              and mutual success. Throughout my career, I've helped organizations 
-              navigate complex technological landscapes to achieve their business objectives.
-            </p>
-            <p className="text-muted-foreground">
-              With over 15 years of experience in strategic sales leadership, I've developed 
-              a consultative approach that focuses on understanding customer challenges, 
-              aligning technology solutions, and delivering measurable business outcomes.
-            </p>
-          </motion.div>
           
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="relative h-[300px] rounded-lg overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-indigo-900/20 dark:from-blue-950/50 dark:to-indigo-950/50 z-10 rounded-lg" />
-            <img
-              src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              alt="Fahim Raashid"
-              className="absolute inset-0 w-full h-full object-cover rounded-lg"
-            />
-          </motion.div>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature, index) => (
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            {/* Profile Image */}
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative"
             >
-              <Card className="h-full border-none shadow-md hover:shadow-lg transition-shadow">
-                <CardContent className="pt-6">
-                  <div className="mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
+              <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden">
+                <Image
+                  src="/assets/images/fahim.png"
+                  alt="Fahim Raashid"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              </div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-500 rounded-full opacity-20 blur-2xl" />
             </motion.div>
-          ))}
-        </div>
+
+            {/* Content */}
+            <div className="space-y-8">
+              <Card className="p-8 bg-white dark:bg-gray-800 shadow-xl">
+                <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                  I am Fahim Raashid, a results-oriented Sales Leader with a proven track record in driving revenue growth and market expansion across the Middle East and Africa (MEA) region. With expertise in strategic sales and technology solutions, I specialize in identifying new opportunities, building strong client relationships, and delivering tailored solutions to meet business needs.
+                </p>
+                
+                <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+                  My passion lies in developing innovative sales strategies, penetrating emerging markets, and exceeding sales targets. I thrive in dynamic environments where I can leverage my skills to create value for clients and drive organizational success in the MEA region.
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-semibold mb-4">Contact Information</h3>
+                    <div className="space-y-2">
+                      <p className="flex items-center text-gray-600 dark:text-gray-400">
+                        <span className="font-medium mr-2">Phone:</span>
+                        +971 56 48x xx xx
+                      </p>
+                      <p className="flex items-center text-gray-600 dark:text-gray-400">
+                        <span className="font-medium mr-2">Location:</span>
+                        UAE, Dubai
+                      </p>
+                      <p className="flex items-center text-gray-600 dark:text-gray-400">
+                        <span className="font-medium mr-2">Email:</span>
+                        fahimraashid@gmail.com
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-xl font-semibold mb-4">Areas of Expertise</h3>
+                    <div className="grid grid-cols-2 gap-2">
+                      {expertise.map((skill, index) => (
+                        <motion.div
+                          key={skill}
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                          viewport={{ once: true }}
+                          className="flex items-center space-x-2"
+                        >
+                          <div className="w-2 h-2 bg-blue-500 rounded-full" />
+                          <span className="text-gray-600 dark:text-gray-400">{skill}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Achievements Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {achievements.map((achievement, index) => (
+                  <motion.div
+                    key={achievement.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <Card className="p-6 bg-white dark:bg-gray-800 hover:shadow-lg transition-shadow">
+                      <div className="flex items-start space-x-4">
+                        <div className="p-2 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
+                          {achievement.icon}
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                            {achievement.title}
+                          </h4>
+                          <p className="text-gray-600 dark:text-gray-400">
+                            {achievement.description}
+                          </p>
+                        </div>
+                      </div>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default AboutSection;
+}

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { AnimatedText } from "@/components/ui/animated-text";
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -17,72 +18,50 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section 
-      id="hero" 
-      className="relative min-h-screen flex items-center pt-20 overflow-hidden"
-    >
-      <div 
-        className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-indigo-900/20 dark:from-blue-950/70 dark:to-indigo-950/70 z-0"
-      />
-      
-      <div 
-        className="absolute inset-0 bg-[url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1920')] bg-cover bg-center opacity-30 dark:opacity-10 z-[-1]"
-      />
-      
-      <div className="container relative z-10">
-        <div 
-          className={`max-w-3xl transition-all duration-1000 ease-out transform ${
-            isVisible 
-              ? "translate-y-0 opacity-100" 
-              : "translate-y-10 opacity-0"
-          }`}
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-purple-900 to-blue-900 overflow-hidden">
+      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+      <div className="container mx-auto px-4 z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center"
         >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-            <span className="block mb-2">Strategic Sales</span>
-            <span className="block">
-              <AnimatedText 
-                text="Leadership for MEA" 
-                className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400" 
-              />
-            </span>
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+            Fahim Raashid
           </h1>
-          
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl">
-            Driving revenue growth and market expansion for technology 
-            enterprises across the Middle East and Africa region.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button 
-              size="lg" 
-              className="group"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="text-xl md:text-2xl text-blue-200 mb-8"
+          >
+            Sales Leader & Technology Solutions Expert
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+            className="text-lg text-gray-300 max-w-2xl mx-auto"
+          >
+            Driving revenue growth and market expansion across the Middle East and Africa (MEA) region
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
+            className="mt-12"
+          >
+            <a
+              href="#contact"
+              className="bg-white text-blue-900 px-8 py-3 rounded-full font-semibold hover:bg-blue-100 transition-colors duration-300"
             >
-              Connect Now
-              <ArrowRight 
-                size={18} 
-                className="ml-2 transition-transform group-hover:translate-x-1" 
-              />
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              onClick={() => document.getElementById('track-record')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              View Track Record
-            </Button>
-          </div>
-        </div>
+              Get in Touch
+            </a>
+          </motion.div>
+        </motion.div>
       </div>
-      
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div 
-          className="w-10 h-10 border-2 border-primary rounded-full flex items-center justify-center cursor-pointer"
-          onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-        >
-          <ArrowRight size={20} className="rotate-90" />
-        </div>
-      </div>
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/50 to-transparent" />
     </section>
   );
 };

@@ -1,0 +1,145 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Card } from "@/components/ui/card";
+import { TrendingUp, Users, Target, Award } from "lucide-react";
+
+export default function ExperienceSection() {
+  const experiences = [
+    {
+      company: "Fluid Codes - An Ansys Apex Partner",
+      role: "Sr. Sales Account Manager",
+      period: "September 2022 - Present",
+      achievements: [
+        "Led enterprise software sales initiatives resulting in 200% revenue growth",
+        "Managed key client relationships with Fortune 500 companies",
+        "Developed and executed strategic sales plans for the MEA region",
+        "Achieved 150% of annual sales target in Q1 2023"
+      ],
+      highlights: [
+        "Successfully closed deals worth $5M+ in enterprise software solutions",
+        "Built and led a high-performing sales team of 8 members",
+        "Implemented CRM system improving sales efficiency by 40%",
+        "Established strategic partnerships with key industry players"
+      ]
+    },
+    {
+      company: "LEMO - Middle East",
+      role: "Technical Sales Engineer",
+      period: "September 2021 - September 2022",
+      achievements: [
+        "Increased sales revenue by 120% through technical solution selling",
+        "Developed and maintained relationships with key clients",
+        "Created technical proposals and solution architectures",
+        "Led product demonstrations and technical presentations"
+      ],
+      highlights: [
+        "Successfully penetrated new markets in Saudi Arabia and Qatar",
+        "Reduced sales cycle time by 30% through improved technical documentation",
+        "Achieved 95% client satisfaction rate",
+        "Mentored junior sales engineers in technical selling"
+      ]
+    },
+    {
+      company: "Mahindra Consulting Engineers",
+      role: "Assistant Engineer - Projects & Business Development",
+      period: "November 2018 - August 2021",
+      achievements: [
+        "Managed multiple engineering projects worth $2M+",
+        "Developed business strategies for market expansion",
+        "Led client engagement and relationship building",
+        "Coordinated cross-functional teams for project delivery"
+      ],
+      highlights: [
+        "Successfully delivered 15+ major engineering projects",
+        "Reduced project delivery time by 25% through process optimization",
+        "Generated new business opportunities worth $3M",
+        "Implemented quality control measures improving client satisfaction"
+      ]
+    }
+  ];
+
+  return (
+    <section id="experience" className="py-20 bg-white dark:bg-gray-800">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="max-w-6xl mx-auto"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            Professional Experience
+          </h2>
+
+          <div className="space-y-12">
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={exp.company}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                viewport={{ once: true }}
+              >
+                <Card className="p-8 bg-gray-50 dark:bg-gray-700 border-l-4 border-blue-500">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                    <div>
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                        {exp.role}
+                      </h3>
+                      <p className="text-blue-600 dark:text-blue-400 font-medium text-lg">
+                        {exp.company}
+                      </p>
+                    </div>
+                    <p className="text-gray-600 dark:text-gray-300 mt-2 md:mt-0">
+                      {exp.period}
+                    </p>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div>
+                      <h4 className="text-lg font-semibold mb-4 flex items-center">
+                        <TrendingUp className="h-5 w-5 text-blue-500 mr-2" />
+                        Key Achievements
+                      </h4>
+                      <ul className="space-y-3">
+                        {exp.achievements.map((achievement, i) => (
+                          <li
+                            key={i}
+                            className="flex items-start space-x-2 text-gray-600 dark:text-gray-300"
+                          >
+                            <span className="text-blue-500 mt-1">•</span>
+                            <span>{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 className="text-lg font-semibold mb-4 flex items-center">
+                        <Award className="h-5 w-5 text-blue-500 mr-2" />
+                        Highlights
+                      </h4>
+                      <ul className="space-y-3">
+                        {exp.highlights.map((highlight, i) => (
+                          <li
+                            key={i}
+                            className="flex items-start space-x-2 text-gray-600 dark:text-gray-300"
+                          >
+                            <span className="text-blue-500 mt-1">•</span>
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+} 

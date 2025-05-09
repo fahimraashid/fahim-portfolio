@@ -13,7 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Send, Mail, Phone, Linkedin, MapPin } from "lucide-react";
+import { Send, Mail, Phone, Linkedin, MapPin, Github } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -117,182 +117,144 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 bg-muted/30">
-      <div className="container">
+    <section id="contact" className="py-20 bg-white dark:bg-gray-800">
+      <div className="container mx-auto px-4">
         <motion.div
-          className="max-w-2xl mx-auto text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto"
         >
-          <h2 className="text-3xl font-bold tracking-tight mb-4">Get in Touch</h2>
-          <p className="text-xl text-muted-foreground">
-            Let's discuss how I can help drive growth for your business in the MEA region.
-          </p>
-        </motion.div>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            Get in Touch
+          </h2>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <Card className="border-none shadow-md h-full">
-              <CardHeader>
-                <CardTitle>Contact Information</CardTitle>
-                <CardDescription>
-                  Ready to explore growth opportunities? Reach out directly or fill out the form.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid gap-6">
-                  {contactInfo.map((item, index) => (
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="p-8 bg-gray-50 dark:bg-gray-700">
+              <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
+              
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <Mail className="h-6 w-6 text-blue-500 mt-1" />
+                  <div>
+                    <h4 className="font-medium text-gray-900 dark:text-white">Email</h4>
                     <a
-                      key={index}
-                      href={item.href}
-                      className="flex items-center gap-4 text-muted-foreground hover:text-primary transition-colors"
-                      target={item.label === "LinkedIn" ? "_blank" : undefined}
-                      rel={item.label === "LinkedIn" ? "noopener noreferrer" : undefined}
+                      href="mailto:fahimraashid@gmail.com"
+                      className="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition-colors"
                     >
-                      <div className="flex items-center justify-center size-10 rounded-full bg-muted">
-                        {item.icon}
-                      </div>
-                      <div>
-                        <p className="font-medium">{item.label}</p>
-                        <p>{item.value}</p>
-                      </div>
+                      fahimraashid@gmail.com
                     </a>
-                  ))}
+                  </div>
                 </div>
 
-                <div className="mt-12">
-                  <h3 className="text-lg font-semibold mb-4">Executive Inquiry</h3>
-                  <p className="text-muted-foreground mb-4">
-                    For executive-level discussions regarding strategic sales leadership or
-                    market expansion initiatives, please reach out directly.
-                  </p>
-                  <Button variant="outline" className="w-full">
-                    Schedule a Call
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <Card className="border-none shadow-md">
-              <CardHeader>
-                <CardTitle>Send a Message</CardTitle>
-                <CardDescription>
-                  Fill out the form below and I'll get back to you promptly.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Name</FormLabel>
-                            <FormControl>
-                              <Input placeholder="Your name" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Email</FormLabel>
-                            <FormControl>
-                              <Input placeholder="your.email@company.com" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-
-                    <FormField
-                      control={form.control}
-                      name="company"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Company</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Your company name" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="message"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Message</FormLabel>
-                          <FormControl>
-                            <Textarea
-                              placeholder="How can I help with your business objectives?"
-                              className="min-h-[120px]"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <Button 
-                      type="submit" 
-                      className="w-full group"
-                      disabled={isSubmitting}
+                <div className="flex items-start space-x-4">
+                  <Phone className="h-6 w-6 text-blue-500 mt-1" />
+                  <div>
+                    <h4 className="font-medium text-gray-900 dark:text-white">Phone</h4>
+                    <a
+                      href="tel:+9715648xxxxx"
+                      className="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition-colors"
                     >
-                      {isSubmitting ? (
-                        <span className="flex items-center gap-2">
-                          <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
-                            <circle
-                              className="opacity-25"
-                              cx="12"
-                              cy="12"
-                              r="10"
-                              stroke="currentColor"
-                              strokeWidth="4"
-                              fill="none"
-                            ></circle>
-                            <path
-                              className="opacity-75"
-                              fill="currentColor"
-                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                            ></path>
-                          </svg>
-                          Sending...
-                        </span>
-                      ) : (
-                        <span className="flex items-center gap-2">
-                          Send Message
-                          <Send size={16} className="transition-transform group-hover:translate-x-1" />
-                        </span>
-                      )}
-                    </Button>
-                  </form>
-                </Form>
-              </CardContent>
+                      +971 56 48x xx xx
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <MapPin className="h-6 w-6 text-blue-500 mt-1" />
+                  <div>
+                    <h4 className="font-medium text-gray-900 dark:text-white">Location</h4>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      Dubai, United Arab Emirates
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <h4 className="font-medium text-gray-900 dark:text-white mb-4">
+                  Connect with me
+                </h4>
+                <div className="flex space-x-4">
+                  <a
+                    href="https://linkedin.com/in/your-profile"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition-colors"
+                  >
+                    <Linkedin className="h-6 w-6" />
+                  </a>
+                  <a
+                    href="https://github.com/your-profile"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition-colors"
+                  >
+                    <Github className="h-6 w-6" />
+                  </a>
+                </div>
+              </div>
             </Card>
-          </motion.div>
-        </div>
+
+            <Card className="p-8 bg-gray-50 dark:bg-gray-700">
+              <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
+              <form className="space-y-6">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  >
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Your name"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={4}
+                    className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Your message"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-blue-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-600 transition-colors"
+                >
+                  Send Message
+                </button>
+              </form>
+            </Card>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
