@@ -34,8 +34,14 @@ export default function EducationSection() {
   ];
 
   return (
-    <section id="education" className="py-20 bg-gray-50 dark:bg-gray-900">
-      <div className="container mx-auto px-4">
+    <section id="education" className="relative py-24 bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -43,15 +49,21 @@ export default function EducationSection() {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600"
+          >
             Education & Certifications
-          </h2>
+          </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-6">
-                <GraduationCap className="h-6 w-6 text-blue-500" />
-                <h3 className="text-2xl font-semibold">Education</h3>
+                <GraduationCap className="h-6 w-6 text-blue-400" />
+                <h3 className="text-2xl font-semibold text-white">Education</h3>
               </div>
               
               <div className="space-y-6">
@@ -63,23 +75,23 @@ export default function EducationSection() {
                     transition={{ duration: 0.8, delay: index * 0.2 }}
                     viewport={{ once: true }}
                   >
-                    <Card className="p-6 bg-white dark:bg-gray-800">
-                      <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                    <Card className="p-6 bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors">
+                      <h4 className="text-xl font-bold text-white mb-2">
                         {edu.degree}
                       </h4>
-                      <p className="text-blue-600 dark:text-blue-400 mb-2">
+                      <p className="text-blue-400 mb-2">
                         {edu.institution}
                       </p>
-                      <p className="text-gray-600 dark:text-gray-300 mb-4">
+                      <p className="text-gray-300 mb-4">
                         {edu.period}
                       </p>
                       <div>
-                        <h5 className="font-semibold mb-2">Relevant Coursework:</h5>
+                        <h5 className="font-semibold mb-2 text-white">Relevant Coursework:</h5>
                         <ul className="space-y-1">
                           {edu.coursework.map((course, i) => (
                             <li
                               key={i}
-                              className="text-gray-600 dark:text-gray-300"
+                              className="text-gray-300"
                             >
                               • {course}
                             </li>
@@ -94,11 +106,11 @@ export default function EducationSection() {
 
             <div>
               <div className="flex items-center space-x-2 mb-6">
-                <Award className="h-6 w-6 text-blue-500" />
-                <h3 className="text-2xl font-semibold">Certifications</h3>
+                <Award className="h-6 w-6 text-blue-400" />
+                <h3 className="text-2xl font-semibold text-white">Certifications</h3>
               </div>
               
-              <Card className="p-6 bg-white dark:bg-gray-800">
+              <Card className="p-6 bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors">
                 <div className="space-y-4">
                   {certifications.map((cert, index) => (
                     <motion.div
@@ -109,8 +121,8 @@ export default function EducationSection() {
                       viewport={{ once: true }}
                       className="flex items-center space-x-3"
                     >
-                      <div className="w-2 h-2 bg-blue-500 rounded-full" />
-                      <span className="text-gray-700 dark:text-gray-300">
+                      <div className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
+                      <span className="text-gray-300">
                         {cert}
                       </span>
                     </motion.div>

@@ -60,8 +60,14 @@ export default function ExperienceSection() {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-white dark:bg-gray-800">
-      <div className="container mx-auto px-4">
+    <section id="experience" className="relative py-24 bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -69,9 +75,15 @@ export default function ExperienceSection() {
           viewport={{ once: true }}
           className="max-w-6xl mx-auto"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600"
+          >
             Professional Experience
-          </h2>
+          </motion.h2>
 
           <div className="space-y-12">
             {experiences.map((exp, index) => (
@@ -82,34 +94,34 @@ export default function ExperienceSection() {
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: true }}
               >
-                <Card className="p-8 bg-gray-50 dark:bg-gray-700 border-l-4 border-blue-500">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                <Card className="p-8 bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                      <h3 className="text-2xl font-bold text-white">
                         {exp.role}
                       </h3>
-                      <p className="text-blue-600 dark:text-blue-400 font-medium text-lg">
+                      <p className="text-blue-400 font-medium text-lg mt-1">
                         {exp.company}
                       </p>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-300 mt-2 md:mt-0">
+                    <p className="text-gray-300 mt-2 md:mt-0">
                       {exp.period}
                     </p>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-8">
                     <div>
-                      <h4 className="text-lg font-semibold mb-4 flex items-center">
-                        <TrendingUp className="h-5 w-5 text-blue-500 mr-2" />
+                      <h4 className="text-lg font-semibold mb-4 flex items-center text-white">
+                        <TrendingUp className="h-5 w-5 text-blue-400 mr-2" />
                         Key Achievements
                       </h4>
                       <ul className="space-y-3">
                         {exp.achievements.map((achievement, i) => (
                           <li
                             key={i}
-                            className="flex items-start space-x-2 text-gray-600 dark:text-gray-300"
+                            className="flex items-start space-x-2 text-gray-300"
                           >
-                            <span className="text-blue-500 mt-1">•</span>
+                            <span className="text-blue-400 mt-1">•</span>
                             <span>{achievement}</span>
                           </li>
                         ))}
@@ -117,17 +129,17 @@ export default function ExperienceSection() {
                     </div>
 
                     <div>
-                      <h4 className="text-lg font-semibold mb-4 flex items-center">
-                        <Award className="h-5 w-5 text-blue-500 mr-2" />
+                      <h4 className="text-lg font-semibold mb-4 flex items-center text-white">
+                        <Award className="h-5 w-5 text-blue-400 mr-2" />
                         Highlights
                       </h4>
                       <ul className="space-y-3">
                         {exp.highlights.map((highlight, i) => (
                           <li
                             key={i}
-                            className="flex items-start space-x-2 text-gray-600 dark:text-gray-300"
+                            className="flex items-start space-x-2 text-gray-300"
                           >
-                            <span className="text-blue-500 mt-1">•</span>
+                            <span className="text-blue-400 mt-1">•</span>
                             <span>{highlight}</span>
                           </li>
                         ))}
