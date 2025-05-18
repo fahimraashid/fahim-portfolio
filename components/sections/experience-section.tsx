@@ -111,10 +111,10 @@ export default function ExperienceSection() {
   ];
 
   return (
-    <section id="experience" className="relative py-24 bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 overflow-hidden">
+    <section id="experience" className="relative py-24 bg-gradient-to-b from-purple-950 via-indigo-950 to-purple-950 overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
       </div>
 
@@ -131,7 +131,7 @@ export default function ExperienceSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600"
+            className="text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-400"
           >
             Professional Experience
           </motion.h2>
@@ -151,7 +151,7 @@ export default function ExperienceSection() {
                       <h3 className="text-2xl font-bold text-white">
                         {exp.role}
                       </h3>
-                      <p className="text-blue-400 font-medium text-lg mt-1">
+                      <p className="text-purple-400 font-medium text-lg mt-1">
                         {exp.company}
                       </p>
                     </div>
@@ -163,7 +163,7 @@ export default function ExperienceSection() {
                   <div className="grid md:grid-cols-2 gap-8">
                     <div>
                       <h4 className="text-lg font-semibold mb-4 flex items-center text-white">
-                        <TrendingUp className="h-5 w-5 text-blue-400 mr-2" />
+                        <TrendingUp className="h-5 w-5 text-purple-400 mr-2" />
                         Key Achievements
                       </h4>
                       <ul className="space-y-3">
@@ -172,7 +172,7 @@ export default function ExperienceSection() {
                             key={i}
                             className="flex items-start space-x-2 text-gray-300"
                           >
-                            <span className="text-blue-400 mt-1">•</span>
+                            <span className="text-purple-400 mt-1">•</span>
                             <span>{achievement}</span>
                           </li>
                         ))}
@@ -181,7 +181,7 @@ export default function ExperienceSection() {
 
                     <div>
                       <h4 className="text-lg font-semibold mb-4 flex items-center text-white">
-                        <Award className="h-5 w-5 text-blue-400 mr-2" />
+                        <Award className="h-5 w-5 text-purple-400 mr-2" />
                         Highlights
                       </h4>
                       <ul className="space-y-3">
@@ -190,7 +190,7 @@ export default function ExperienceSection() {
                             key={i}
                             className="flex items-start space-x-2 text-gray-300"
                           >
-                            <span className="text-blue-400 mt-1">•</span>
+                            <span className="text-purple-400 mt-1">•</span>
                             <span>{highlight}</span>
                           </li>
                         ))}

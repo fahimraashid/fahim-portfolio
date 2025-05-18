@@ -92,10 +92,10 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="relative py-24 bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 overflow-hidden">
+    <section id="about" className="relative py-24 bg-gradient-to-b from-purple-950 via-indigo-950 to-purple-950 overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
       </div>
 
@@ -112,7 +112,7 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600"
+            className="text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-400"
           >
             About Me
           </motion.h2>
@@ -136,7 +136,7 @@ export default function AboutSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl" />
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl" />
             </motion.div>
 
             {/* Content */}
@@ -155,15 +155,15 @@ export default function AboutSection() {
                     <h3 className="text-xl font-semibold text-white mb-4">Contact Information</h3>
                     <div className="space-y-3">
                       <p className="flex items-center text-gray-300">
-                        <Phone className="w-5 h-5 mr-3 text-blue-400" />
+                        <Phone className="w-5 h-5 mr-3 text-purple-400" />
                         +971 56 48x xx xx
                       </p>
                       <p className="flex items-center text-gray-300">
-                        <MapPin className="w-5 h-5 mr-3 text-blue-400" />
+                        <MapPin className="w-5 h-5 mr-3 text-purple-400" />
                         UAE, Dubai
                       </p>
                       <p className="flex items-center text-gray-300">
-                        <Mail className="w-5 h-5 mr-3 text-blue-400" />
+                        <Mail className="w-5 h-5 mr-3 text-purple-400" />
                         fahimraashid@gmail.com
                       </p>
                     </div>
@@ -181,7 +181,7 @@ export default function AboutSection() {
                           viewport={{ once: true }}
                           className="flex items-center space-x-2"
                         >
-                          <div className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
+                          <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
                           <span className="text-gray-300">{skill}</span>
                         </motion.div>
                       ))}
@@ -202,7 +202,7 @@ export default function AboutSection() {
                   >
                     <Card className="p-6 bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors">
                       <div className="flex items-start space-x-4">
-                        <div className="p-2 bg-blue-500/10 rounded-lg">
+                        <div className="p-2 bg-purple-500/10 rounded-lg">
                           {achievement.icon}
                         </div>
                         <div>

@@ -85,10 +85,10 @@ export default function EducationSection() {
   ];
 
   return (
-    <section id="education" className="relative py-24 bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 overflow-hidden">
+    <section id="education" className="relative py-24 bg-gradient-to-b from-purple-950 via-indigo-950 to-purple-950 overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
       </div>
 
@@ -105,7 +105,7 @@ export default function EducationSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600"
+            className="text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-400"
           >
             Education & Certifications
           </motion.h2>
@@ -113,7 +113,7 @@ export default function EducationSection() {
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-6">
-                <GraduationCap className="h-6 w-6 text-blue-400" />
+                <GraduationCap className="h-6 w-6 text-purple-400" />
                 <h3 className="text-2xl font-semibold text-white">Education</h3>
               </div>
               
@@ -130,7 +130,7 @@ export default function EducationSection() {
                       <h4 className="text-xl font-bold text-white mb-2">
                         {edu.degree}
                       </h4>
-                      <p className="text-blue-400 mb-2">
+                      <p className="text-purple-400 mb-2">
                         {edu.institution}
                       </p>
                       <p className="text-gray-300 mb-4">
@@ -157,7 +157,7 @@ export default function EducationSection() {
 
             <div>
               <div className="flex items-center space-x-2 mb-6">
-                <Award className="h-6 w-6 text-blue-400" />
+                <Award className="h-6 w-6 text-purple-400" />
                 <h3 className="text-2xl font-semibold text-white">Certifications</h3>
               </div>
               
@@ -172,7 +172,7 @@ export default function EducationSection() {
                       viewport={{ once: true }}
                       className="flex items-center space-x-3"
                     >
-                      <div className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
                       <span className="text-gray-300">
                         {cert}
                       </span>

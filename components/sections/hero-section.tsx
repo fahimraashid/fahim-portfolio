@@ -91,11 +91,11 @@ const HeroSection = () => {
     <div 
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-purple-950 via-indigo-950 to-purple-950"
     >
       {/* Subtle background pattern */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
       </div>
 
@@ -110,7 +110,7 @@ const HeroSection = () => {
       >
         <div className="relative">
           {/* Subtle glow effect */}
-          <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl" />
+          <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl" />
 
           {/* Content */}
           <motion.div
@@ -130,7 +130,7 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-400">
                   Fahim Raashid
                 </span>
               </h1>
@@ -140,7 +140,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-xl md:text-2xl text-blue-200 mb-8 font-light"
+              className="text-xl md:text-2xl text-purple-200 mb-8 font-light"
             >
               Sales Leader & Technology Solutions Expert
             </motion.div>
@@ -165,10 +165,10 @@ const HeroSection = () => {
                 href="#contact"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="group relative inline-flex items-center justify-center px-8 py-3 font-semibold text-white transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="group relative inline-flex items-center justify-center px-8 py-3 font-semibold text-white transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
               >
-                <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-blue-600 group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-                <span className="absolute inset-0 w-full h-full bg-blue-500 border border-blue-600 group-hover:bg-blue-600"></span>
+                <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-purple-600 group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+                <span className="absolute inset-0 w-full h-full bg-purple-500 border border-purple-600 group-hover:bg-purple-600"></span>
                 <span className="relative flex items-center gap-2">
                   Get in Touch
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -179,7 +179,7 @@ const HeroSection = () => {
                 href="#about"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="group relative inline-flex items-center justify-center px-8 py-3 font-semibold text-white transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="group relative inline-flex items-center justify-center px-8 py-3 font-semibold text-white transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
               >
                 <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-white/10 group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
                 <span className="absolute inset-0 w-full h-full border border-white/20 group-hover:bg-white/10"></span>
@@ -199,7 +199,7 @@ const HeroSection = () => {
           {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-1 h-1 bg-white/20 rounded-full"
+              className="absolute w-1 h-1 bg-purple-300/20 rounded-full"
               initial={{
                 x: Math.random() * dimensions.width,
                 y: Math.random() * dimensions.height,
