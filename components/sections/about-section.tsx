@@ -1,11 +1,62 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import { ArrowRight, Award, Users, Target, Globe, Mail, Phone, MapPin } from "lucide-react";
 
 export default function AboutSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (!containerRef.current) return;
+      
+      const rect = containerRef.current.getBoundingClientRect();
+      const isAtBottom = rect.bottom <= window.innerHeight + 10;
+      
+      if (isAtBottom && e.deltaY > 0) {
+        e.preventDefault();
+        e.stopPropagation();
+        const nextSection = document.getElementById("experience");
+        if (nextSection) {
+          const targetPosition = nextSection.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
+
+    const handleScroll = (e: Event) => {
+      if (!containerRef.current) return;
+      
+      const rect = containerRef.current.getBoundingClientRect();
+      const isAtBottom = rect.bottom <= window.innerHeight + 10;
+      
+      if (isAtBottom) {
+        const nextSection = document.getElementById("experience");
+        if (nextSection) {
+          const targetPosition = nextSection.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false, capture: true });
+    window.addEventListener('scroll', handleScroll, { capture: true });
+    
+    return () => {
+      window.removeEventListener('wheel', handleWheel, { capture: true });
+      window.removeEventListener('scroll', handleScroll, { capture: true });
+    };
+  }, []);
+
   const expertise = [
     "Strategic Sales",
     "Business Development",

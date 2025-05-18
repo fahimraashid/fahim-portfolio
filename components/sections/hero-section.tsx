@@ -23,6 +23,54 @@ const HeroSection = () => {
     return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (!containerRef.current) return;
+      
+      const rect = containerRef.current.getBoundingClientRect();
+      const isAtBottom = rect.bottom <= window.innerHeight + 10;
+      
+      if (isAtBottom && e.deltaY > 0) {
+        e.preventDefault();
+        e.stopPropagation();
+        const nextSection = document.getElementById("about");
+        if (nextSection) {
+          const targetPosition = nextSection.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
+
+    const handleScroll = (e: Event) => {
+      if (!containerRef.current) return;
+      
+      const rect = containerRef.current.getBoundingClientRect();
+      const isAtBottom = rect.bottom <= window.innerHeight + 10;
+      
+      if (isAtBottom) {
+        const nextSection = document.getElementById("about");
+        if (nextSection) {
+          const targetPosition = nextSection.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false, capture: true });
+    window.addEventListener('scroll', handleScroll, { capture: true });
+    
+    return () => {
+      window.removeEventListener('wheel', handleWheel, { capture: true });
+      window.removeEventListener('scroll', handleScroll, { capture: true });
+    };
+  }, []);
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const { clientX, clientY } = e;
     const { left, top, width, height } = containerRef.current?.getBoundingClientRect() || { left: 0, top: 0, width: 0, height: 0 };

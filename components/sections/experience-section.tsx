@@ -1,10 +1,61 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { TrendingUp, Users, Target, Award } from "lucide-react";
 
 export default function ExperienceSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (!containerRef.current) return;
+      
+      const rect = containerRef.current.getBoundingClientRect();
+      const isAtBottom = rect.bottom <= window.innerHeight + 10;
+      
+      if (isAtBottom && e.deltaY > 0) {
+        e.preventDefault();
+        e.stopPropagation();
+        const nextSection = document.getElementById("education");
+        if (nextSection) {
+          const targetPosition = nextSection.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
+
+    const handleScroll = (e: Event) => {
+      if (!containerRef.current) return;
+      
+      const rect = containerRef.current.getBoundingClientRect();
+      const isAtBottom = rect.bottom <= window.innerHeight + 10;
+      
+      if (isAtBottom) {
+        const nextSection = document.getElementById("education");
+        if (nextSection) {
+          const targetPosition = nextSection.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false, capture: true });
+    window.addEventListener('scroll', handleScroll, { capture: true });
+    
+    return () => {
+      window.removeEventListener('wheel', handleWheel, { capture: true });
+      window.removeEventListener('scroll', handleScroll, { capture: true });
+    };
+  }, []);
+
   const experiences = [
     {
       company: "Fluid Codes - An Ansys Apex Partner",
